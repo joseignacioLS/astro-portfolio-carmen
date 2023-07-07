@@ -1,36 +1,95 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="view-transition" content="same-origin" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="/"> Carmen Bonita</a>
+        <a href="/about"> About</a>
+      </nav>
+    </header>
+    <slot />
+    <footer>footer</footer>
+  </body>
 </html>
+
+<script>
+  window.navigation.addEventListener("navigate", (event) => {
+    const toUrl = new URL(event.destination.url);
+
+    if (location.origin !== toUrl.origin) return;
+    event.intercept({
+      async handler() {
+        const response = await fetch(toUrl.pathname);
+        const text = await response.text();
+
+        const bodySearch = text.match(/<body>([\s\S]*)<\/body>/i);
+        if (!bodySearch) return "";
+        document.startViewTransition(() => {
+          document.body.innerHTML = bodySearch[0];
+          document.documentElement.scrollTop = 0;
+        });
+      },
+    });
+  });
+</script>
+
 <style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  html,
+  body {
+    color: white;
+    background-color: rgb(51, 51, 51);
+    overflow-x: hidden;
+  }
+  body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  header {
+    padding: 1rem;
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  main {
+    padding: 6rem;
+  }
 </style>
