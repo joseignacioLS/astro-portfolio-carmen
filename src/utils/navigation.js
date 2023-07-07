@@ -4,7 +4,6 @@ export const addNavigationAnimation = () => {
 
     const toUrl = new URL(event.destination.url);
     if (location.origin !== toUrl.origin) return;
-    if (location.href === toUrl.href) return;
 
     event.intercept({
       async handler() {

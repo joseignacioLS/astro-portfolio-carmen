@@ -1,23 +1,23 @@
 ---
+import { routes } from "../routes/routes";
 const currentPath = Astro.url.pathname;
 ---
 
 <header>
-  <nav class="navbar">
+  <a href="/">
+    <img class="header__logo" src="/cropped-circle_autorrretrato-100.png" />
+  </a>
+  <nav class="header__navbar">
     {
-      currentPath !== "/" && (
-        <a href="/">
-          <span style="view-transition-name: text-home">Carmen Bonita</span>
+      routes.map((r) => (
+        <a
+          id={r.id}
+          href={r.href}
+          class={`tab ${r.href === currentPath ? "selected-tab" : ""}`}
+        >
+          {r.title}
         </a>
-      )
-    }
-    {
-      currentPath !== "/about" && (
-        <a href="/about">
-          <span style="view-transition-name: text-about" />
-          About
-        </a>
-      )
+      ))
     }
   </nav>
 </header>
@@ -26,17 +26,41 @@ const currentPath = Astro.url.pathname;
   header {
     padding: 1rem;
     width: 100%;
-    height: 2rem;
+
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
-  .navbar {
-    width: 100%;
+
+  .header__logo {
+    height: 100%;
+  }
+  .header__navbar {
     height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 1rem;
+  }
+
+  .tab {
+    font-weight: bold;
+    color:rgb(172, 172, 172);
+  }
+  .selected-tab {
+    color: rgb(44, 44, 44);
+  }
+
+  @media (max-width: 900px) {
+    header {
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 1rem;
+    }
+
+    .header__navbar {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 </style>

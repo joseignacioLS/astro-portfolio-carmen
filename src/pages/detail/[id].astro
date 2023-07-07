@@ -1,0 +1,19 @@
+---
+import { work } from "../../data/work";
+import Layout from "../../layouts/Layout.astro";
+const { id } = Astro.params;
+
+const info = work.find((w) => w.id === id);
+---
+
+<Layout title={`Carmen Bonita ${info?.title}`}>
+  <main>
+    <h1>{info?.title}</h1>
+    <img
+      src={info?.mini}
+      style={`view-transition-name: item-image-${info?.id}`}
+    />
+  </main>
+
+  <style></style>
+</Layout>
