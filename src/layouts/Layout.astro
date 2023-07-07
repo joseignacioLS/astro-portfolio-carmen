@@ -37,12 +37,12 @@ const { title } = Astro.props;
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    max-width: 100%;
   }
   html,
   body {
     color: rgb(61, 61, 61);
     background-color: white;
-    overflow-x: hidden;
   }
   body {
     padding: 0 15%;
@@ -50,6 +50,8 @@ const { title } = Astro.props;
 
     display: grid;
     grid-template-rows: auto 1fr auto;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   a {

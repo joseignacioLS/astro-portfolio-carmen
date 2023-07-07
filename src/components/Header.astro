@@ -13,7 +13,7 @@ const currentPath = Astro.url.pathname;
         <a
           id={r.id}
           href={r.href}
-          class={`tab ${r.href === currentPath ? "selected-tab" : ""}`}
+          class={`tab ${currentPath.includes(r.href) ? "selected-tab" : ""}`}
         >
           {r.title}
         </a>
@@ -45,7 +45,7 @@ const currentPath = Astro.url.pathname;
 
   .tab {
     font-weight: bold;
-    color:rgb(172, 172, 172);
+    color: rgb(172, 172, 172);
   }
   .selected-tab {
     color: rgb(44, 44, 44);
