@@ -8,11 +8,10 @@ export const addNavigationAnimation = () => {
     event.intercept({
       async handler() {
         const text = await fetchUrlText(toUrl.pathname);
-        const bodySearch = extractBodyFromHTML(text);
-        if (!bodySearch) return;
+        const html = new DOMParser().parseFromString(text, "text/html");
 
         document.startViewTransition(() => {
-          document.body.innerHTML = bodySearch[0];
+          document.body.innerHTML = html.body.innerHTML;
           document.documentElement.scrollTop = 0;
         });
       },
@@ -24,10 +23,6 @@ const fetchUrlText = async (url) => {
   const response = await fetch(url);
   const text = await response.text();
   return text;
-};
-
-const extractBodyFromHTML = (html) => {
-  return html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
 };
 
 const checkViewTransitionIsAvailable = () => {
