@@ -1,6 +1,17 @@
 ---
 import { work } from "../../data/work";
 import Layout from "../../layouts/Layout.astro";
+
+export const getStaticPaths = () => {
+  return work.map((w) => {
+    return {
+      params: {
+        id: w.id,
+      },
+    };
+  });
+};
+
 const { id } = Astro.params;
 
 const info = work.find((w) => w.id === id);
