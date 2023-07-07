@@ -1,10 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
+import Header from "../components/Header.astro";
 ---
 
 <Layout title="About">
-  <main><p>About</p></main>
+  <Header />
+  <main>
+    <h1><span style="view-transition-name: text-about">About</span></h1>
+  </main>
 </Layout>
 
-<style></style>
+<style>
+  .navbar {
+  }
+</style>

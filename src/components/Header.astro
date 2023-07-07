@@ -1,0 +1,42 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+  <nav class="navbar">
+    {
+      currentPath !== "/" && (
+        <a href="/">
+          <span style="view-transition-name: text-home">Carmen Bonita</span>
+        </a>
+      )
+    }
+    {
+      currentPath !== "/about" && (
+        <a href="/about">
+          <span style="view-transition-name: text-about" />
+          About
+        </a>
+      )
+    }
+  </nav>
+</header>
+
+<style>
+  header {
+    padding: 1rem;
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+  }
+</style>
