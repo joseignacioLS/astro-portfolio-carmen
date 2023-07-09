@@ -1,0 +1,62 @@
+---
+const { info } = Astro.props;
+---
+
+<a href={`/detail/${info.id}`} class="gallery-item">
+  <img style={`view-transition-name: item-image-${info.id}`} src={info.mini} />
+  <div class="gallery-item__info">
+    <h2 class="gallery-item__title">
+      <span style={`view-transition-name: title-${info.id}`}>
+        {info.title}
+      </span>
+    </h2>
+    <span class="gallery-item__subtitle">{info.subtitle}</span>
+  </div>
+</a>
+
+<style>
+  .gallery-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+  }
+
+  .gallery-item__info {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    padding: 1.5rem;
+
+    transition: 0.3s ease;
+    opacity: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(to bottom, white 0%, transparent 50%);
+    object-fit: border-box;
+  }
+
+  .gallery-item__info:hover {
+    opacity: 1;
+  }
+
+  .gallery-item__title {
+  }
+
+  .gallery-item__subtitle {
+    opacity: 0.6;
+
+    font-size: 1rem;
+  }
+  .gallery-item__img {
+    width: 100%;
+    object-fit: contain;
+  }
+</style>

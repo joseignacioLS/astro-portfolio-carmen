@@ -19,12 +19,20 @@ const info = work.find((w) => w.id === id);
 
 <Layout title={`Carmen Bonita ${info?.title}`}>
   <main>
-    <h1>{info?.title}</h1>
+    <h1 class="detail-title">
+      <span style={`view-transition-name: title-${info?.id}`}
+        >{info?.title}</span
+      >
+    </h1>
     <img
       src={info?.mini}
       style={`view-transition-name: item-image-${info?.id}`}
     />
   </main>
-
-  <style></style>
 </Layout>
+
+<style>
+  .detail-title {
+    font-size: 3rem;
+  }
+</style>
