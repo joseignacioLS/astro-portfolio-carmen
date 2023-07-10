@@ -25,6 +25,7 @@ const info = work.find((w) => w.id === id);
       >
     </h1>
     <img
+      loading="lazy"
       src={info?.mini}
       style={`view-transition-name: item-image-${info?.id}`}
     />

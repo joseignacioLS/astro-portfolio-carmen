@@ -3,7 +3,12 @@ const { info } = Astro.props;
 ---
 
 <a href={`/detail/${info.id}`} class="gallery-item">
-  <img style={`view-transition-name: item-image-${info.id}`} src={info.mini} />
+  <img
+    loading="lazy"
+    class="gallery-item__img"
+    style={`view-transition-name: item-image-${info.id}`}
+    src={info.mini}
+  />
   <div class="gallery-item__info">
     <h2 class="gallery-item__title">
       <span style={`view-transition-name: title-${info.id}`}>
@@ -18,11 +23,15 @@ const { info } = Astro.props;
   .gallery-item {
     position: relative;
     aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .gallery-item__img {
+    width: 100%;
   }
 
   .gallery-item__info {
     width: 100%;
-    height: 100%;
 
     position: absolute;
     left: 0;
@@ -39,11 +48,12 @@ const { info } = Astro.props;
 
     font-size: 1.5rem;
     font-weight: bold;
-    background: linear-gradient(to bottom, white 0%, transparent 50%);
+    background-color: white;
+    box-shadow: 0 1rem 2rem 2rem white;
     object-fit: border-box;
   }
 
-  .gallery-item__info:hover {
+  .gallery-item:hover .gallery-item__info {
     opacity: 1;
   }
 
@@ -58,5 +68,15 @@ const { info } = Astro.props;
   .gallery-item__img {
     width: 100%;
     object-fit: contain;
+  }
+
+  @media (max-width: 900px) {
+    .gallery-item__info {
+      background: linear-gradient(
+        to bottom,
+        rgb(255, 255, 255) 50%,
+        rgba(255, 255, 255, 0.514) 100%
+      );
+    }
   }
 </style>
