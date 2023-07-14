@@ -102,19 +102,20 @@ header {
   }
 }
 
-
 // MEDIAS
 
 @media (max-width: 900px) {
   header {
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
     gap: 1rem;
-  }
 
-  .header__navbar {
-    flex-wrap: wrap;
-    justify-content: center;
+    .navbar {
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
   }
 
   footer {
