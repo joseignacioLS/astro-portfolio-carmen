@@ -1,5 +1,5 @@
 ---
-import { work } from "../../data/work";
+import { work, workDetail } from "../../data/work";
 import Layout from "../../layouts/Layout.astro";
 
 export const getStaticPaths = () => {
@@ -15,19 +15,52 @@ export const getStaticPaths = () => {
 const { id } = Astro.params;
 
 const info = work.find((w) => w.id === id);
+const detail = workDetail[info?.id] || { layout: ["mini"], resources: {} };
 ---
 
-<Layout title={`Carmen Bonita ${info?.title}`}>
+<Layout title="Carmen Bonita">
   <main>
-    <h1 class="detail-title">
+    <h1 class="detail__title">
       <span style={`view-transition-name: title-${info?.id}`}
         >{info?.title}</span
       >
     </h1>
-    <img
-      loading="lazy"
-      src={info?.mini}
-      style={`view-transition-name: item-image-${info?.id}`}
-    />
+    {
+      detail?.layout.map((item) => {
+        if (item === "mini") {
+          return (
+            <img
+              class="detail__mini"
+              loading="lazy"
+              src={info?.mini}
+              style={`view-transition-name: item-image-${info?.id}`}
+            />
+          );
+        }
+        if (item.includes("text")) {
+          const [_, index, className] = item.split("_");
+          return <p class={className}>{detail.resources.text[+index]}</p>;
+        }
+        if (item.includes("img")) {
+          const [_, index, className] = item.split("_");
+          return (
+            <img
+              loading="lazy"
+              class={className}
+              src={detail.resources.img[+index]}
+            />
+          );
+        }
+        if (item.includes("grid")) {
+          return (
+            <div class="detail__grid">
+              {detail.resources.grid.map((img) => (
+                <img src={img} />
+              ))}
+            </div>
+          );
+        }
+      })
+    }
   </main>
 </Layout>

@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap");
 
-@import url("./detail.scss");
-@import url("./gallery.scss");
+@import "detail";
+@import "gallery";
+@import "variables";
 
 * {
   margin: 0;
@@ -12,7 +13,7 @@
 }
 html,
 body {
-  color: rgb(61, 61, 61);
+  color: $grey;
   background-color: white;
 }
 body {
@@ -65,7 +66,7 @@ footer {
 
   .footer__disclaimer {
     font-size: 0.75rem;
-    color: grey;
+    color: $grey;
   }
 }
 
@@ -97,7 +98,7 @@ header {
     }
 
     .selected-tab {
-      color: rgb(44, 44, 44);
+      color: $grey;
     }
   }
 }
@@ -130,7 +131,7 @@ header {
     }
     .footer__disclaimer {
       font-size: 1rem;
-      color: grey;
+      color: $grey;
     }
   }
 }
