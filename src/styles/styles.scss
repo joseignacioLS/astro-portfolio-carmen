@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap");
+
+@import url("./detail.scss");
+@import url("./gallery.scss");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  max-width: 100%;
+}
+html,
+body {
+  color: rgb(61, 61, 61);
+  background-color: white;
+}
+body {
+  padding: 0 15%;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+  padding: 6rem 0;
+}
+
+// FOOTER
+
+footer {
+  padding: 1rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+
+  .rrss {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    list-style: none;
+    li {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+    }
+    img {
+      width: 1rem;
+    }
+  }
+
+  .footer__disclaimer {
+    font-size: 0.75rem;
+    color: grey;
+  }
+}
+
+// HEADER
+
+header {
+  padding: 1rem;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    height: 5rem;
+  }
+
+  .navbar {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+
+    .tab {
+      position: relative;
+      font-weight: bold;
+      color: rgb(172, 172, 172);
+    }
+
+    .selected-tab {
+      color: rgb(44, 44, 44);
+    }
+  }
+}
+
+
+// MEDIAS
+
+@media (max-width: 900px) {
+  header {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .header__navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  footer {
+    .rrss {
+      gap: 2rem;
+      & > li > a > span {
+        display: none;
+      }
+      img {
+        width: 2rem;
+      }
+    }
+    .footer__disclaimer {
+      font-size: 1rem;
+      color: grey;
+    }
+  }
+}
