@@ -56,13 +56,3 @@
     font-size: 1rem;
   }
 }
-
-@media (max-width: 900px) {
-  .gallery-item__info {
-    background: linear-gradient(
-      to bottom,
-      rgb(255, 255, 255) 50%,
-      rgba(255, 255, 255, 0.514) 100%
-    );
-  }
-}
