@@ -1,0 +1,34 @@
+@import "variables";
+
+.detail__title {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.detail__mini {
+  display: block;
+}
+
+.detail__grid {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  img {
+    flex-shrink: 1;
+    width: 30%;
+  }
+}
+
+@media (max-width: 900px) {
+  .detail__title {
+    font-size: 2rem;
+  }
+  .detail__grid {
+    img {
+      flex-shrink: 1;
+      width: 50%;
+    }
+  }
+}
