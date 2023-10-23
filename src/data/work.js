@@ -72,24 +72,24 @@ export const work = [
 ];
 
 export const workDetail = {
-  diatoms: {
-    layout: ["mini", "text_0_red-text", "grid"],
-    resources: {
-      grid: [
-        "/images/Redes1-e1600257260863-480x480.png",
-        "/images/Redes1-e1600257260863-480x480.png",
-        "/images/Redes1-e1600257260863-480x480.png",
-        "/images/Redes1-e1600257260863-480x480.png",
-        "/images/Redes1-e1600257260863-480x480.png",
-      ],
-      img: [
-        "/images/Redes1-e1600257260863-480x480.png",
-        "/images/Redes1-e1600257260863-480x480.png",
-      ],
-      text: [
-        "Esto es un pequeño trabajo que hice basado en diatomeas",
-        "Las diatomeas molan",
-      ],
-    },
-  },
+  // diatoms: {
+  //   layout: ["mini", "text_0_red-text", "grid"],
+  //   resources: {
+  //     grid: [
+  //       "/images/Redes1-e1600257260863-480x480.png",
+  //       "/images/Redes1-e1600257260863-480x480.png",
+  //       "/images/Redes1-e1600257260863-480x480.png",
+  //       "/images/Redes1-e1600257260863-480x480.png",
+  //       "/images/Redes1-e1600257260863-480x480.png",
+  //     ],
+  //     img: [
+  //       "/images/Redes1-e1600257260863-480x480.png",
+  //       "/images/Redes1-e1600257260863-480x480.png",
+  //     ],
+  //     text: [
+  //       "Esto es un pequeño trabajo que hice basado en diatomeas",
+  //       "Las diatomeas molan",
+  //     ],
+  //   },
+  // },
 };
